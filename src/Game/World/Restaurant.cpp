@@ -13,6 +13,9 @@ void Restaurant::setPlayer(Player *player) {
 }
 
 Restaurant::Restaurant() {
+    tables.load("images/tables.png");
+    table1.cropFrom(tables,3,165,61,207);
+
     floor.load("images/floor.jpg");
     entityManager = new EntityManager();
     ofImage chefPlayerImage;
@@ -106,6 +109,7 @@ void Restaurant::generateClient(){
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
+    table1.draw(ofGetWidth(),0);
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
