@@ -13,5 +13,6 @@ public:
 	void addClient(Client *c);
 	void removeLeavingClients();
 	std::vector<Entity*> entities;
+	bool getLose(){return firstClient->getLost();}
 
 };

@@ -3,13 +3,13 @@
 #include "State.h"
 #include "Button.h"
 
-class MenuState : public State {
+class WinState : public State {
 private:
-	ofImage img1,background;
+	ofImage img1,win;
 	Button *startButton;
 
 public:
-	MenuState();
+	WinState();
 	void tick();
 	void render();
 	void keyPressed(int key);

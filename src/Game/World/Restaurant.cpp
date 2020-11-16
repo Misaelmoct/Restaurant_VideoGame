@@ -13,8 +13,13 @@ void Restaurant::setPlayer(Player *player) {
 }
 
 Restaurant::Restaurant() {
-    tables.load("images/tables.png");
-    table1.cropFrom(tables,3,165,61,207);
+    fancyTables.load("images/Fancy.png");//Taken from:Rpg Maker Sprites
+    fancyTable1.cropFrom(fancyTables,12,12,84,64);
+    fancyTable1.resize(180,130);
+    decor.load("images/sprite.png");//Taken from:Rpg Maker Sprites
+    chair1.cropFrom(decor,107,13,139,37);
+    chair1.resize(150,60);
+
 
     floor.load("images/floor.jpg");
     entityManager = new EntityManager();
@@ -109,7 +114,15 @@ void Restaurant::generateClient(){
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());
-    table1.draw(ofGetWidth(),0);
+    for(int i=0;i<3;i++){
+        chair1.draw(200,85+(150*i));
+        fancyTable1.draw(250,50+(150*i));
+        chair1.draw(425,85+(150*i));
+        chair1.draw(500,85+(150*i));
+        fancyTable1.draw(550,50+(150*i));
+        chair1.draw(725,85+(150*i));
+    }
+
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
@@ -126,4 +139,7 @@ void Restaurant::keyPressed(int key) {
     if(key == 's'){
         serveClient();
     }
+}
+void Restaurant::clearBurger(){
+    player->clearStack();
 }

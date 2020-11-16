@@ -27,7 +27,7 @@ class Restaurant {
         Item* burger;
         Item* botBread;
         Item* topBread;
-        ofImage floor,tables,table1;
+        ofImage floor,decor,tables,chair1,fancyTables, fancyTable1; 
         void initItems();
         void initCounters();
         void initClients();
@@ -36,6 +36,10 @@ class Restaurant {
         void tick();
         void render();
         void keyPressed(int key);
+        int getMoney(){return money;}
+        void resetMoney(){this->money=0;}
+        void clearBurger();
+        bool lost(){return entityManager->getLose();}
 };
 
 

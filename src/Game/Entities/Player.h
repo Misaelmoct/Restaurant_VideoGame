@@ -15,6 +15,7 @@ class Player: public Entity{
         Player(int x, int y, int width, int height, ofImage sprite, EntityManager* em);
         void tick();
         void render();
+        void clearStack();
         void keyPressed(int);
         void keyReleased(int);
         void mousePressed(int, int, int);

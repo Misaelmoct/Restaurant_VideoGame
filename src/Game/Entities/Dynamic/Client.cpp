@@ -7,8 +7,15 @@ Client::~Client(){
     burger->~Burger();
 }
 void Client::render(){
-    burger->render();
     ofSetColor (255,255,255);
+    burger->render();
+    if (patience<=500){
+        ofSetColor(50,0,0);
+    }else if(patience<=1000){
+        ofSetColor(80,0,0);
+    }else if(patience<=1500){
+        ofSetColor(100,0,0);
+    }
     sprite.draw(x, y, width, height);
     // ofDrawRectangle(getBounds());
     if(nextClient != nullptr){
@@ -21,6 +28,10 @@ void Client::tick(){
     burger->setY(y);
     if(patience == 0){
         isLeaving = true;
+        leavingCount++;
+        if(leavingCount==10){
+            isLost=true;
+        }
     }
     if(nextClient != nullptr){
         nextClient->tick();
