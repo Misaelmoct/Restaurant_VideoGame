@@ -32,11 +32,17 @@ bool Burger:: equals(Burger *b){
     if (b->ingredients.size() != this->ingredients.size()){
         equal = false;
     }
-    for(int i = 0; i < ingredients.size() && equal; i++){
+    for(Item *b1: b->ingredients ){
+
+        if (equal == false){
+            return equal;
+            }
         equal = false;
-        for (Item *b1: b->ingredients){
-            if (ingredients[i]->name.compare(b1->name));
+        for (Item *b2: this->ingredients){
+            int v = b1->name.compare(b2->name);
+            if (v == 0){
             equal = true;
+            }
         }
     }
     return equal;
