@@ -41,3 +41,7 @@ bool Burger:: equals(Burger *b){
     }
     return equal;
 }
+
+void Burger::deleteIngredient(){
+    ingredients.pop_back();
+}

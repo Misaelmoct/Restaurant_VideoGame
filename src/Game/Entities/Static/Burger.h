@@ -16,12 +16,14 @@ private:
 public:
     Burger(int, int, int, int);
     void addIngredient(Item *item);
+    void deleteIngredient();
     void render();
     void clear();
     bool equals(Burger*);
     void setY(int y){
         this->y = y;
     }
+
 };
 
 
