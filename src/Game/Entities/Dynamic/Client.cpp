@@ -31,3 +31,7 @@ int Client::serve(Burger* burger){
     isLeaving = true;
     return 10;
 }
+
+Burger* Client::getBurger(){
+    return this->burger;
+}

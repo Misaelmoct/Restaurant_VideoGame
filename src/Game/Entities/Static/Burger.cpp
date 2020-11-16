@@ -26,3 +26,18 @@ void Burger::render(){
 void Burger::clear(){
     ingredients.empty();
 }
+
+bool Burger:: equals(Burger *b){
+    bool equal = true;
+    if (b->ingredients.size() != this->ingredients.size()){
+        equal = false;
+    }
+    for(int i = 0; i < ingredients.size() && equal; i++){
+        equal = false;
+        for (Item *b1: b->ingredients){
+            if (ingredients[i]->name.compare(b1->name));
+            equal = true;
+        }
+    }
+    return equal;
+}

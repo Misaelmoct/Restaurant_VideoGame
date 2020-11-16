@@ -18,6 +18,7 @@ public:
     void addIngredient(Item *item);
     void render();
     void clear();
+    bool equals(Burger*);
     void setY(int y){
         this->y = y;
     }
