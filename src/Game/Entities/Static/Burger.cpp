@@ -39,27 +39,20 @@ void Burger::clear(){
 
 bool Burger:: equals(Burger *b){
    bool equal = true;
-    stack<Item*, vector<Item*> > copyTarget;
+    stack<Item*, vector<Item*> > copyTarget(ingredients);
     stack<Item*, vector<Item*> > copyPar(b->ingredients);
     if (this->ingredients.size() != b->ingredients.size()){
         equal = false;
     }
-    while(!copyPar.empty() && equal){
 
+    while(!copyPar.empty() && equal){
         equal = false;
-        
-        while(!ingredients.empty() && !equal){
-            if(ingredients.top()->name.compare(copyPar.top()->name) == 0){
+        if(copyTarget.top()->name.compare(copyPar.top()->name) == 0){
                 equal = true;
             }
-            copyTarget.push(ingredients.top());
-            ingredients.pop();
-        }
-        while(!copyTarget.empty()){
-            ingredients.push(copyTarget.top());
-            copyTarget.pop();
-        }
+        copyTarget.pop();
         copyPar.pop();
+
     }
     return equal;
 
