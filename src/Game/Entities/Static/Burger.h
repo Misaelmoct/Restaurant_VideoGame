@@ -11,7 +11,7 @@
 class Burger {
 private:
     int x,y,width,height;
- vector<Item*> ingredients;
+ stack <Item*, vector<Item*> >ingredients;
 
 public:
     Burger(int, int, int, int);

@@ -117,7 +117,7 @@ void Restaurant::render() {
     ofSetColor(256, 256, 256);
 }
 void Restaurant::serveClient(){
-    if(entityManager->firstClient!= nullptr){
+    if(entityManager->firstClient!= nullptr && player->getBurger()->equals(entityManager->firstClient->getBurger()) ){
         money += entityManager->firstClient->serve(player->getBurger());
     }
 }

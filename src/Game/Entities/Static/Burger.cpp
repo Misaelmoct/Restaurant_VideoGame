@@ -12,42 +12,65 @@ Burger::Burger(int x, int y, int width, int height){
 }
 
 void Burger::addIngredient(Item *item) {
-    ingredients.push_back(item);
+    ingredients.push(item);
 }
 
 void Burger::render(){
     int counter = 1;
-    for (Item* ingredient:ingredients){
-        ingredient->sprite.draw(x,y-(counter * 10),width,height);
-        counter++;
+    stack <Item*, vector<Item*> > copyTarget;
+        while( !ingredients.empty()){
+        copyTarget.push(ingredients.top());
+        ingredients.pop();;
     }
+        while( !copyTarget.empty()){
+        copyTarget.top()->sprite.draw(x,y-(counter * 10),width,height);
+        counter++;
+        ingredients.push(copyTarget.top());
+        copyTarget.pop();
+    }
+
 }
 
 void Burger::clear(){
-    ingredients.empty();
+    while(!ingredients.empty()){
+    ingredients.pop();
+    }
 }
 
 bool Burger:: equals(Burger *b){
-    bool equal = true;
-    if (b->ingredients.size() != this->ingredients.size()){
+   bool equal = true;
+    stack<Item*, vector<Item*> > copyTarget;
+    stack<Item*, vector<Item*> > copyPar;
+    if (this->ingredients.size() != b->ingredients.size()){
         equal = false;
     }
-    for(Item *b1: b->ingredients ){
+    while(!b->ingredients.empty() && equal){
 
-        if (equal == false){
-            return equal;
-            }
         equal = false;
-        for (Item *b2: this->ingredients){
-            int v = b1->name.compare(b2->name);
-            if (v == 0){
-            equal = true;
+        
+        while(!ingredients.empty()){
+            int v = ingredients.top()->name.compare(b->ingredients.top()->name);
+            if(v == 0){
+                equal = true;
             }
+            copyTarget.push(ingredients.top());
+            ingredients.pop();
         }
+        while(!copyTarget.empty()){
+            ingredients.push(copyTarget.top());
+            copyTarget.pop();
+        }
+        copyPar.push(b->ingredients.top());
+        b->ingredients.pop();
+    }
+    while(!copyPar.empty()){
+        b->ingredients.push(copyPar.top());
+        copyPar.pop();
     }
     return equal;
+
 }
 
 void Burger::deleteIngredient(){
-    ingredients.pop_back();
+    ingredients.pop();
 }
