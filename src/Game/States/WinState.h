@@ -1,12 +1,11 @@
 #pragma once
 
 #include "State.h"
-#include "Button.h"
 
 class WinState : public State {
 private:
 	ofImage img1,win;
-	Button *startButton;
+	bool restart=false;
 
 public:
 	WinState();
@@ -15,4 +14,6 @@ public:
 	void keyPressed(int key);
 	void mousePressed(int x, int y, int button);
 	void reset();
+	bool getRestart(){return restart;}
+	void setRestart(bool r){this->restart = r;}
 };

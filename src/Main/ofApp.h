@@ -14,6 +14,7 @@ private:
 	GameState *gameState;
 	WinState *winState;
 	LoseState *gameover;
+	ofSoundPlayer music, music1, overm;
 
 
 public:
