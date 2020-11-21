@@ -1,33 +1,32 @@
 #include "LoseState.h"
 
 LoseState::LoseState() {
-	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "START MENU");
-	gameover.load("images/Lose.jpg");
+	gameover.load("images/Lose1.jpg");
 }
 void LoseState::tick() {
-	startButton->tick();
-	if(startButton->wasPressed()){
+	if(this->getRestart()){
 		setNextState("Menu");
 		setFinished(true);
 	}
 }
 void LoseState::render() {
-	ofSetBackgroundColor(50,10,10);
+	ofSetBackgroundColor(0,0,0);
+    ofSetColor(10,30,10);
 	gameover.draw(0,0, ofGetWidth(), ofGetHeight());
-    ofSetColor(255,255,255);
-	startButton->render();
+	ofDrawBitmapString("Press SPACEBAR to restart",ofGetWidth()/2 -500,ofGetHeight()/2);
 }
 
 void LoseState::keyPressed(int key){
-	
+	if(key==' '){
+		this->setRestart(true);
+	}
 }
 
 void LoseState::mousePressed(int x, int y, int button){
-	startButton->mousePressed(x, y);
 }
 
 void LoseState::reset(){
+	setRestart(false);
 	setFinished(false);
 	setNextState("");
-	startButton->reset();
 }

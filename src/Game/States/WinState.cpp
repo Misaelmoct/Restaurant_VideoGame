@@ -1,12 +1,10 @@
 #include "WinState.h"
 
 WinState::WinState() {
-	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Restart");
 	win.load("images/win.png");
 }
 void WinState::tick() {
-	startButton->tick();
-	if(startButton->wasPressed()){
+	if(this->getRestart()){
 		setNextState("Menu");
 		setFinished(true);
 	}
@@ -15,19 +13,22 @@ void WinState::render() {
 	ofSetBackgroundColor(10,10,50);
 	ofSetColor(255,255,255);
     win.draw(0,0, ofGetWidth(), ofGetHeight());
-	startButton->render();
+	ofDrawBitmapString("Press SPACEBAR to restart",ofGetWidth()/2 - 50, ofGetHeight()/2);
 }
 
 void WinState::keyPressed(int key){
-	
+	if(key==' '){
+		this->setRestart(true);
+	}
 }
 
 void WinState::mousePressed(int x, int y, int button){
-	startButton->mousePressed(x, y);
 }
 
 void WinState::reset(){
+	setRestart(false);
 	setFinished(false);
 	setNextState("");
-	startButton->reset();
+	
+
 }
