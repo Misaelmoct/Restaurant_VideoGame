@@ -2,7 +2,7 @@
 
 LoseState::LoseState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "START MENU");
-	gameover.load("image/Lose.jpg");
+	gameover.load("images/Lose.jpg");
 }
 void LoseState::tick() {
 	startButton->tick();
@@ -13,7 +13,7 @@ void LoseState::tick() {
 }
 void LoseState::render() {
 	ofSetBackgroundColor(50,10,10);
-	gameover.draw(0,0);
+	gameover.draw(0,0, ofGetWidth(), ofGetHeight());
     ofSetColor(255,255,255);
 	startButton->render();
 }

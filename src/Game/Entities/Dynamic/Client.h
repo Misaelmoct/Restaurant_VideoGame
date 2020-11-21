@@ -6,7 +6,7 @@ class Client: public Entity{
         Burger* burger;
         int originalPatience;
         int patience=2000;
-        int leavingCount=0;
+        static int leavingCount;
         bool isLost = false;
     public:
         Client(int, int, int, int, ofImage, Burger*);
