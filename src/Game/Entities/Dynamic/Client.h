@@ -17,7 +17,6 @@ class Client: public Entity{
         Client* nextClient=nullptr;
         bool isLeaving=false;
         bool getLost(){return isLost;}
-
-
+        void resetCount(){this->leavingCount = 0;}
 
 };

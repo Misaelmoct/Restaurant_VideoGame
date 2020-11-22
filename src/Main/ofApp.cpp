@@ -20,7 +20,9 @@ void ofApp::setup(){
 	music1.load("Bensound - The Jazz Piano _ Royalty Free Music (320 kbps).mp3");
 	//Royalty Free Music taken from:https://www.youtube.com/watch?v=UImwn5BkSt8&ab_channel=TheSound-BeYourSound
 	music1.setLoop(true);
+	music1.setVolume(0.5);
 	music1.play();
+	
 
 	overm.load("(No Copyright Music) Sad Emotional Piano Music (320 kbps).mp3");
 	//Royalty Free Music taken from:https://www.youtube.com/watch?v=MzXCyO0DcyU&ab_channel=DSProductions-NoCopyrightMusic
@@ -33,6 +35,8 @@ void ofApp::update(){
 		currentState->tick();
 		if(currentState->hasFinished()){
 			if(currentState->getNextState() == "Menu"){
+				music.stop();
+				overm.stop();
 				music1.play();
 				currentState = menuState;
 			}else if(currentState->getNextState() == "Game"){

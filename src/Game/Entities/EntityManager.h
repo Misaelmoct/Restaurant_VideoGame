@@ -14,5 +14,6 @@ public:
 	void removeLeavingClients();
 	std::vector<Entity*> entities;
 	bool getLose(){return firstClient->getLost();}
+	void resetCount(){firstClient->resetCount();}
 
 };

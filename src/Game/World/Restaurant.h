@@ -40,6 +40,7 @@ class Restaurant {
         void resetMoney(){this->money=0;}
         void clearBurger();
         bool lost(){return entityManager->getLose();}
+        void resetCount(){entityManager->resetCount();}
 };
 
 

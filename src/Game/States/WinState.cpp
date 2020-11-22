@@ -29,6 +29,4 @@ void WinState::reset(){
 	setRestart(false);
 	setFinished(false);
 	setNextState("");
-	
-
 }

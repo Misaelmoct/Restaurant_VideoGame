@@ -1,6 +1,5 @@
 #include "Client.h"
 
-int Client::leavingCount = 0;
 
 Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burger): Entity(x, y, width, height, sprite){
     this->burger = burger;
@@ -8,6 +7,7 @@ Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burg
 Client::~Client(){
     burger->~Burger();
 }
+
 void Client::render(){
     ofSetColor (255,255,255);
     burger->render();
@@ -30,12 +30,11 @@ void Client::tick(){
     burger->setY(y);
     if(patience == 0){
         isLeaving = true;
-        leavingCount++;
-        
+        leavingCount+=1; 
     }
-    if(leavingCount==10){
-            isLost=true;
-        }
+    if(leavingCount == 10){
+        isLost = true;
+    }
     if(nextClient != nullptr){
         nextClient->tick();
     }

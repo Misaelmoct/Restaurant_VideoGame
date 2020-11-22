@@ -17,4 +17,5 @@ public:
 	void reset();
 	bool getRestart(){return restart;}
 	void setRestart(bool r){this->restart=r;}
+
 };

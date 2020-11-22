@@ -11,9 +11,9 @@ void LoseState::tick() {
 }
 void LoseState::render() {
 	ofSetBackgroundColor(0,0,0);
-    ofSetColor(10,30,10);
+    ofSetColor(255,0,0);
 	gameover.draw(0,0, ofGetWidth(), ofGetHeight());
-	ofDrawBitmapString("Press SPACEBAR to restart",ofGetWidth()/2 -500,ofGetHeight()/2);
+	ofDrawBitmapString("Press SPACEBAR to restart",ofGetWidth()/2 -50,ofGetHeight()/2 -100);
 }
 
 void LoseState::keyPressed(int key){
