@@ -1,5 +1,7 @@
 #include "Client.h"
 
+int Client::leavingCount = 0;
+
 
 Client::Client(int x, int y, int width, int height, ofImage sprite, Burger* burger): Entity(x, y, width, height, sprite){
     this->burger = burger;
@@ -30,10 +32,11 @@ void Client::tick(){
     burger->setY(y);
     if(patience == 0){
         isLeaving = true;
-        leavingCount+=1; 
+        leavingCount++; 
     }
-    if(leavingCount == 10){
+    if(leavingCount==10){
         isLost = true;
+        // leavingCount++;
     }
     if(nextClient != nullptr){
         nextClient->tick();
