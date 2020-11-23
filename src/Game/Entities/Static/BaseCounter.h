@@ -10,11 +10,11 @@
 class BaseCounter: public Entity {
     private:
         Item *item;
+        
 
     public:
         BaseCounter(int x, int y, int width, int height, Item* item, ofImage sprite);
         Item* getItem();
         void showItem();
-
 };
 #endif //APGAMEENGINE_BASECOUNTER_H
