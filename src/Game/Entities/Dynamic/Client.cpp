@@ -13,13 +13,12 @@ Client::~Client(){
 void Client::render(){
     ofSetColor (255,255,255);
     burger->render();
-    if (patience<=500){
-        ofSetColor(50,0,0);
-    }else if(patience<=1000){
-        ofSetColor(80,0,0);
-    }else if(patience<=1500){
-        ofSetColor(100,0,0);
+   if(patience % 100 == 0){
+    a += 12;
     }
+    ofDrawBitmapString(to_string(a), ofGetWidth()/2, 50);
+    sprite.draw(x, y, width, height);
+    ofSetColor(255,0,0,a);
     sprite.draw(x, y, width, height);
     // ofDrawRectangle(getBounds());
     if(nextClient != nullptr){

@@ -20,5 +20,6 @@ class Client: public Entity{
         Burger* getBurger();
         bool getLost(){return isLost;}
         void resetCount(){this->leavingCount = 0;}
+        int a = 0;
 
 };

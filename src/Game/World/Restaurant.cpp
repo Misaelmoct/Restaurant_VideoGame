@@ -13,7 +13,7 @@ void Restaurant::setPlayer(Player *player) {
 }
 
 Restaurant::Restaurant() {
-    font1.load("Font1square.ttf", 26);
+    font1.load("Font1square.ttf", 26);//Taken from: https://www.fontspace.com/wendys-waffles-font-f29505
     tables.load("images/tables.png");
     fancyTables.load("images/Fancy.png");//Taken from:Rpg Maker Sprites
     fancyTable1.cropFrom(fancyTables,12,12,84,64);
