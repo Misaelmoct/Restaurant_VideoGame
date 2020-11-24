@@ -13,4 +13,5 @@ class Inspector: public Client{
     ~Inspector();
     void tick();
     int getPatience(){return patience;}
+    static bool badReview;
 };

@@ -1,5 +1,8 @@
 #include "Inspector.h"
 
+
+bool Inspector::badReview = false;
+
 Inspector::Inspector(int x, int y, int width, int height, ofImage sprite, Burger *burger, int *money1): Client(x, y, width, height, sprite, burger){
     this->money1 = money1;
 }
@@ -16,6 +19,7 @@ void Inspector:: tick(){
         nextClient->tick();
     }
     if(patience == 0){
-       (*money1) /= 2; 
+       (*money1) /= 2;
+       badReview =  true; 
     }
 }

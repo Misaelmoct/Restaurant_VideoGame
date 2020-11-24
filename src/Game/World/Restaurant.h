@@ -40,6 +40,7 @@ class Restaurant {
         void tick();
         void render();
         void keyPressed(int key);
+        ofTrueTypeFont font1;
 };
 
 

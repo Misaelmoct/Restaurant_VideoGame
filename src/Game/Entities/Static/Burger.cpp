@@ -59,5 +59,7 @@ bool Burger:: equals(Burger *b){
 }
 
 void Burger::deleteIngredient(){
+    if(!ingredients.empty()){
     ingredients.pop();
+    }
 }
