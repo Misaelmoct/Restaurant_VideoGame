@@ -13,6 +13,7 @@ void Restaurant::setPlayer(Player *player) {
 }
 
 Restaurant::Restaurant() {
+    font1.load("Font1square.ttf", 26);
     tables.load("images/tables.png");
     table1.cropFrom(tables,3,165,61,207);
 
@@ -91,8 +92,11 @@ void Restaurant::tick() {
     ticks++;
     if(ticks % 400 == 0){
         generateClient();
-        if(gadgetTicks == 4) gadgetTicks = 0;
+        //if(gadgetTicks == 5) gadgetTicks = 0;
+        if(entityManager->inspector == nullptr){
         gadgetTicks++;
+        if(gadgetTicks >= 2) Inspector::badReview = false;
+        }
     }
     player->tick();
     entityManager->tick();
@@ -125,8 +129,22 @@ void Restaurant::render() {
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
-    ofDrawBitmapString("Money: " + to_string(money), ofGetWidth()/2, 10);
+    string moneyStr = "money    ";
+    font1.drawString("money: " + to_string(money), ofGetWidth()/2 - moneyStr.length()/2*26, 32);
     ofSetColor(256, 256, 256);
+
+    if (entityManager->inspector != nullptr && entityManager->inspector->getPatience() > 1700){
+        ofSetColor(200, 0, 0);
+        string str = "INSPECTOR!";
+        font1.drawString(str,(ofGetWidth()/2 - font1.stringWidth(str)/2) , ofGetHeight()/2 - font1.stringHeight(str));
+        ofSetColor(256, 256, 256);
+    }
+    if(Inspector::badReview == true){
+        ofSetColor(200, 0, 0);
+        string str = "BAD REVIEW!";
+        font1.drawString(str, ofGetWidth()/2 - font1.stringWidth(str)/2, ofGetHeight()/2 - font1.stringHeight(str));
+        ofSetColor(256, 256, 256);
+    }
 }
 void Restaurant::serveClient(){
     if(entityManager->firstClient!= nullptr){
