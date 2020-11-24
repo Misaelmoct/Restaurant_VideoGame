@@ -262,3 +262,6 @@ paket-files/
 __pycache__/
 *.pyc
 .vscode/launch.json
+bin/data/images/Decor.png
+bin/data/images/chairs.png
+.gitignore

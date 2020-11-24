@@ -30,7 +30,7 @@ class Restaurant {
         Item* botBread;
         Item* topBread;
         vector<Item*> ingredientsAvailable;
-        ofImage floor,tables,table1;
+        ofImage floor,decor,tables,chair1,fancyTables, fancyTable1; 
         void initItems();
         void initCounters();
         void initClients();
@@ -41,6 +41,10 @@ class Restaurant {
         void render();
         void keyPressed(int key);
         ofTrueTypeFont font1;
+        int getMoney(){return money;}
+        bool lost(){return entityManager->getLose();}
+        void resetCount(){entityManager->resetCount();}
+        EntityManager* getManager(){ return entityManager;}
 };
 
 

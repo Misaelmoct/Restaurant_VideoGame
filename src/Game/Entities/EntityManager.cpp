@@ -14,7 +14,7 @@ void EntityManager::removeLeavingClients(){
     Client* tempClient = nullptr;
     while(firstClient != nullptr && firstClient->isLeaving){
         tempClient = firstClient->nextClient;
-        if(inspector != nullptr && inspector->isLeaving == true){
+        if(inspector != nullptr && inspector->isLeaving == true && inspector == firstClient){
             delete inspector;
             inspector = nullptr;
         }

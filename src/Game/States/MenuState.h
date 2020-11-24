@@ -5,7 +5,7 @@
 
 class MenuState : public State {
 private:
-	ofImage img1;
+	ofImage img1,background;
 	Button *startButton;
 
 public:

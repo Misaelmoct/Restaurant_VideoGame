@@ -78,3 +78,7 @@ void Player::mousePressed(int x, int y, int button){
 void Player::setFacing(string facing){
     this->facing = facing;
 }
+
+void Player::clearStack(){
+    burger->clear();
+}

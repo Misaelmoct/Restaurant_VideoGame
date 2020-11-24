@@ -7,7 +7,8 @@ class Client: public Entity{
         Burger* burger;
         int originalPatience;
         int patience=2000;
-
+        static int leavingCount;
+        bool isLost = false;
     public:
         Client(int, int, int, int, ofImage, Burger*);
         ~Client();
@@ -17,9 +18,7 @@ class Client: public Entity{
         Client* nextClient=nullptr;
         bool isLeaving=false;
         Burger* getBurger();
-
-
-
-
+        bool getLost(){return isLost;}
+        void resetCount(){this->leavingCount = 0;}
 
 };

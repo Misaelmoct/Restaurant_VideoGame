@@ -2,6 +2,7 @@
 
 MenuState::MenuState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
+	background.load("images/background1.jpg");
 }
 void MenuState::tick() {
 	startButton->tick();
@@ -12,7 +13,11 @@ void MenuState::tick() {
 	}
 }
 void MenuState::render() {
-	ofSetBackgroundColor(230, 230, 250);
+	// ofSetBackgroundColor(230, 230, 250);
+	ofSetBackgroundColor(10,30,30);
+	background.draw(0,0);
+	ofSetColor(255);
+	ofDrawBitmapString("Press 'E' to collect ingredients. \nPress 'S' to serve",200,600);
 	startButton->render();
 }
 
