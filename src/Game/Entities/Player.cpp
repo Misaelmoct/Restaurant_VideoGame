@@ -48,6 +48,7 @@ void Player::render(){
 void Player::keyPressed(int key){
     if(key == 'e'){
         BaseCounter* ac = getActiveCounter();
+
         if(ac != nullptr){
             Item* item = ac->getItem();
             if(item != nullptr){
