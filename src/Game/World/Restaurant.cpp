@@ -91,6 +91,8 @@ void Restaurant::tick() {
     ticks++;
     if(ticks % 400 == 0){
         generateClient();
+        if(gadgetTicks == 4) gadgetTicks = 0;
+        gadgetTicks++;
     }
     player->tick();
     entityManager->tick();
@@ -106,7 +108,16 @@ void Restaurant::generateClient(){
         b->addIngredient(ingredientsAvailable[ofRandom(0, 3)]);
     }
     b->addIngredient(topBread);
-    entityManager->addClient(new Client(0, 50, 64, 72,people[ofRandom(8)], b));
+    
+    if(gadgetTicks == 5 && entityManager->inspector == nullptr){
+    Inspector* gadget = new Inspector(0, 50, 64, 72,people[ofRandom(8)], b, &money);
+    entityManager->addClient(gadget);
+    entityManager->inspector = gadget;
+    gadgetTicks = 0;
+    }else{
+    Client *c1 = new Client(0, 50, 64, 72,people[ofRandom(8)], b);
+    entityManager->addClient(c1);
+    }
 }
 void Restaurant::render() {
     floor.draw(0,0, ofGetWidth(), ofGetHeight());

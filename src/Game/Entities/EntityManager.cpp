@@ -14,8 +14,15 @@ void EntityManager::removeLeavingClients(){
     Client* tempClient = nullptr;
     while(firstClient != nullptr && firstClient->isLeaving){
         tempClient = firstClient->nextClient;
+        if(inspector != nullptr && inspector->isLeaving == true){
+            delete inspector;
+            inspector = nullptr;
+        }
+        else{
         delete firstClient;
+        }
         firstClient = tempClient;
+
     }
 }
 void EntityManager::render(){
@@ -35,6 +42,7 @@ void EntityManager::addClient(Client* c){
     if(firstClient == nullptr){
         firstClient = c;
     }else{
+     
         Client* tempClient = firstClient;
         tempClient->setY(tempClient->getY()+72);
         while(tempClient->nextClient!=nullptr){

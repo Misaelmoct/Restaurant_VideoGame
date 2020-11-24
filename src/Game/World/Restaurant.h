@@ -8,12 +8,14 @@
 #include "Player.h"
 #include "EntityManager.h"
 #include "BaseCounter.h"
+#include "Inspector.h"
 
 class Restaurant {
     private:
         Player* player;
         EntityManager* entityManager;
         int ticks=0;
+        int gadgetTicks = 1;
         std::vector<ofImage> people;
         int money =0;
 
@@ -33,6 +35,7 @@ class Restaurant {
         void initCounters();
         void initClients();
         void generateClient();
+        void generateInspector();
         void serveClient();
         void tick();
         void render();

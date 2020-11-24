@@ -2,11 +2,13 @@
 
 #include "Entity.h"
 #include "Client.h"
+#include "Inspector.h"
 
 class EntityManager {
 
 public:
 	Client* firstClient;
+	Inspector* inspector;
 	void tick();
 	void render();
 	void addEntity(Entity *e);
