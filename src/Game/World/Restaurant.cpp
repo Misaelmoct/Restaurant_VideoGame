@@ -140,6 +140,3 @@ void Restaurant::keyPressed(int key) {
         serveClient();
     }
 }
-void Restaurant::clearBurger(){
-    player->clearStack();
-}

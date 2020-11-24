@@ -37,8 +37,6 @@ class Restaurant {
         void render();
         void keyPressed(int key);
         int getMoney(){return money;}
-        void resetMoney(){this->money=0;}
-        void clearBurger();
         bool lost(){return entityManager->getLose();}
         void resetCount(){entityManager->resetCount();}
 };

@@ -36,9 +36,8 @@ void GameState::keyReleased(int key){
 }
 
 void GameState::reset(){
-	restaurant->resetMoney();
 	restaurant->resetCount();
-	restaurant->clearBurger();
+	restaurant = new Restaurant();
 	setFinished(false);
 	setNextState("");
 }
