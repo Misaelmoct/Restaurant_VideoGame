@@ -91,7 +91,7 @@ void Restaurant::tick() {
     ticks++;
     if(ticks % 400 == 0){
         generateClient();
-        if(gadgetTicks == 4) gadgetTicks = 0;
+        if(gadgetTicks == 5) gadgetTicks = 0;
         gadgetTicks++;
     }
     player->tick();
