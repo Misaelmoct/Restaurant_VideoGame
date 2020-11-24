@@ -8,7 +8,7 @@ void GameState::tick() {
 	if(restaurant->getMoney()==100){
 		setNextState("Win");
 		setFinished(true);
-	}else if(restaurant->lost()){
+	}else if(restaurant->getManager()->firstClient != nullptr && restaurant->lost()){
 		setNextState("Lose");
 		setFinished(true);
 	}

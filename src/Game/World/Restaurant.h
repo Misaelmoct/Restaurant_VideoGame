@@ -39,6 +39,7 @@ class Restaurant {
         int getMoney(){return money;}
         bool lost(){return entityManager->getLose();}
         void resetCount(){entityManager->resetCount();}
+        EntityManager* getManager(){ return entityManager;}
 };
 
 
