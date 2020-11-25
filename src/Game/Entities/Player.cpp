@@ -32,7 +32,7 @@ void Player::tick(){
 
     if(isCooking){
         cookingTimer++;
-        if(cookingTimer%401==400){
+        if(cookingTimer%201==200){
             isCooked = true;
             isCooking = false;
             hasBeenCooked = true;
@@ -43,22 +43,29 @@ void Player::tick(){
 }
 
 void Player::render(){
-    BaseCounter* ac = getActiveCounter();
+    ofSetColor(255,0,128);
     if(isCooking){
-        ofSetColor(0,255,255);
-        ofDrawBitmapString("Cooking...",200,450);
-        ofSetColor(255,255,255); 
+        ofDrawBitmapString("Cooking...",225,425);
     }else if(isCooked){
-        ofSetColor(0,255,255);
-        ofDrawBitmapString("Cooked",200,450);
-        ofSetColor(139,69,19);
+        ofDrawBitmapString("Cooked",225,425);
     }else{
-        ofSetColor(0,255,255);
-        ofDrawBitmapString("Cook",200,450);
-        ofSetColor(255,255,255);
+        ofDrawBitmapString("Cook",225,430);
     }
-    
-    if(ac != nullptr){
+    ofSetColor(255,255,255);
+    BaseCounter* ac = getActiveCounter();
+    if(dynamic_cast<StoveCounter*>(ac)){
+        if(isCooking){
+            ofSetColor(255,255,255); 
+            ac->showItem();
+        }else if(isCooked){
+            ofSetColor(139,69,19);
+            ac->showItem();
+        }else{
+            ofSetColor(255,255,255);
+            ac->showItem();
+        }
+    }
+    else if(ac != nullptr){
         ac->showItem();
         ofSetColor(255,255,255);
     }

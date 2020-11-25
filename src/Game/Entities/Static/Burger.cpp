@@ -18,8 +18,12 @@ void Burger::addIngredient(Item *item) {
 void Burger::render(){
     int counter = 1;
     for (Item* ingredient:ingredients){
+        if(ingredient->name == "patty"){
+            ofSetColor(139,69,19);
+        }
         ingredient->sprite.draw(x,y-(counter * 10),width,height);
         counter++;
+        ofSetColor(255,255,255);
     }
 }
 
