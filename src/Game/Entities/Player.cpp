@@ -29,21 +29,55 @@ void Player::tick(){
     }else if(x + width >= ofGetWidth()){
         facing = "left";
     }
+    
+    if(isCooking){
+        cookingTimer++;
+        if(cookingTimer%201==200){
+            isCooked = true;
+            isCooking = false;
+            hasBeenCooked = true;
+            cookingTimer++;
+        }
+    }
 }
 
 void Player::render(){
-    BaseCounter* ac = getActiveCounter();
-    if(ac != nullptr){
-        ac->showItem();
+     ofSetColor(255,0,128);
+    if(isCooking){
+        ofDrawBitmapString("Cooking...",225,475);
+    }else if(isCooked){
+        ofDrawBitmapString("Cooked",225,475);
+    }else{
+        ofDrawBitmapString("Cook",225,475);
     }
+    ofSetColor(255,255,255);
+    BaseCounter* ac = getActiveCounter();
+    if(dynamic_cast<StoveCounter*>(ac)){
+        if(isCooking){
+            ofSetColor(255,255,255); 
+            ac->showItem();
+        }else if(isCooked){
+            ofSetColor(139,69,19);
+            ac->showItem();
+        }else{
+            ofSetColor(255,255,255);
+            ac->showItem();
+        }
+    }
+    else if(ac != nullptr){
+        ac->showItem();
+        ofSetColor(255,255,255);
+    }
+    
     ofSetColor(256,256,256);
     ofImage currentFrame = chefAnim->getCurrentFrame();
-   if(facing == "left"){
+    if(facing == "left"){
        currentFrame.mirror(false, true);
     }
-   currentFrame.draw(x, y, width, height);
-   burger->render();
+    currentFrame.draw(x, y, width, height);
+    burger->render();
 }
+
 
 void Player::keyPressed(int key){
     if(key == 'e'){
@@ -51,7 +85,16 @@ void Player::keyPressed(int key){
         if(ac != nullptr){
             Item* item = ac->getItem();
             if(item != nullptr){
-                burger->addIngredient(item);
+                if(dynamic_cast<StoveCounter*>(ac) != NULL){
+                    if(dynamic_cast<StoveCounter*>(ac) && !isCooking && !hasBeenCooked){
+                        isCooking = true;
+                    }else if(dynamic_cast<StoveCounter*>(ac) && isCooked && hasBeenCooked){
+                        burger->addIngredient(item);
+                        isCooking = false;
+                        isCooked = false;
+                        hasBeenCooked = false;
+                    }
+                }else{burger->addIngredient(item);}
             }
         }
     }
