@@ -7,7 +7,8 @@
 class Player: public Entity{
 
     private:
-        int speed = 5;
+        int speed = 5, cookingTimer = 0;
+        bool isCooking = false, isCooked = false, hasBeenCooked = false;
         string facing = "right";
         Animation *chefAnim;
         Burger *burger;
@@ -21,7 +22,6 @@ class Player: public Entity{
         void mousePressed(int, int, int);
         void setFacing(string);
         BaseCounter* getActiveCounter();
-        StoveCounter* stove;
         Burger* getBurger(){
             return burger;
         }

@@ -29,34 +29,70 @@ void Player::tick(){
     }else if(x + width >= ofGetWidth()){
         facing = "left";
     }
+
+    if(isCooking){
+        cookingTimer++;
+        if(cookingTimer%401==400){
+            isCooked = true;
+            isCooking = false;
+            hasBeenCooked = true;
+            cookingTimer++;
+        }
+    }
+
 }
 
 void Player::render(){
     BaseCounter* ac = getActiveCounter();
+    if(isCooking){
+        ofSetColor(0,255,255);
+        ofDrawBitmapString("Cooking...",200,450);
+        ofSetColor(255,255,255); 
+    }else if(isCooked){
+        ofSetColor(0,255,255);
+        ofDrawBitmapString("Cooked",200,450);
+        ofSetColor(139,69,19);
+    }else{
+        ofSetColor(0,255,255);
+        ofDrawBitmapString("Cook",200,450);
+        ofSetColor(255,255,255);
+    }
+    
     if(ac != nullptr){
         ac->showItem();
+        ofSetColor(255,255,255);
     }
+    
     ofSetColor(256,256,256);
     ofImage currentFrame = chefAnim->getCurrentFrame();
-   if(facing == "left"){
+    if(facing == "left"){
        currentFrame.mirror(false, true);
     }
-   currentFrame.draw(x, y, width, height);
-   burger->render();
+    currentFrame.draw(x, y, width, height);
+    burger->render();
 }
 
 void Player::keyPressed(int key){
     if(key == 'e'){
         BaseCounter* ac = getActiveCounter();
-
         if(ac != nullptr){
             Item* item = ac->getItem();
             if(item != nullptr){
-                burger->addIngredient(item);
+                if(dynamic_cast<StoveCounter*>(ac) != NULL){
+                    if(dynamic_cast<StoveCounter*>(ac) && !isCooking && !hasBeenCooked){
+                        isCooking = true;
+                    }else if(dynamic_cast<StoveCounter*>(ac) && isCooked && hasBeenCooked){
+                        burger->addIngredient(item);
+                        isCooking = false;
+                        isCooked = false;
+                        hasBeenCooked = false;
+                    }
+                }else{burger->addIngredient(item);}
             }
         }
     }
 }
+
 BaseCounter* Player::getActiveCounter(){
     for(Entity* e:entityManager->entities){
         BaseCounter* c = dynamic_cast<BaseCounter*>(e);
