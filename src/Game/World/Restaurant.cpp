@@ -60,6 +60,12 @@ void Restaurant::initMode(){
     pasto.cropFrom(treesSprite,0,150,800,49);
     deadTree.cropFrom(treesSprite, 320,1418,58,160);
     }
+
+    else if(State::level == 3){
+        floor.load("images/spaceBackground.jpg");//Taken from: <a href='https://www.freepik.es/vectores/estrella'>Vector de Estrella creado por upklyak - www.freepik.es</a>
+        chefPlayerImage.load("images/alienChef.png");//Taken from: https://pnghut.com/png/a86wFbKTMG/baby-groot-star-lord-clip-art-marvel-comics-guardians-of-the-galaxy-transparent-png
+        font1.load("SpaceFont.ttf", 26);//Taken from: https://www.fontspace.com/game-battles-font-f31916
+    }
 }
 void Restaurant::initItems(){
     ofImage burgerSpriteSheet, cheeseImg, lettuceImg, tomatoImg, burgerImg, botBreadImg, topBreadImg, plateImg;
@@ -137,6 +143,13 @@ void Restaurant::initClients(){
     temp.cropFrom(animals,287,434,109,101);//koala
     people.push_back(temp);
     }
+
+    else if(State::level == 3){
+        temp.load("images/alien.png");//alien Taken from: https://www.pngwing.com/en/free-png-pfqla
+        people.push_back(temp);
+        temp.load("images/astronaut.png");//astronaut Taken from: https://flyclipart.com/astronaut-flying-cartoon-astronaut-clipart-png-515021#
+        people.push_back(temp);
+    }
 }
 void Restaurant::tick() {
     ticks++;
@@ -165,12 +178,12 @@ void Restaurant::generateClient(){
     b->addIngredient(topBread);
     
     if(gadgetTicks == 5 && entityManager->inspector == nullptr){
-    Inspector* gadget = new Inspector(0, 50, 64, 72,people[ofRandom(people.size() - 1)], b, &money);
+    Inspector* gadget = new Inspector(0, 50, 64, 72,people[ofRandom(people.size())], b, &money);
     entityManager->addClient(gadget);
     entityManager->inspector = gadget;
     gadgetTicks = 0;
     }else{
-    Client *c1 = new Client(0, 50, 64, 72,people[ofRandom(people.size() - 1)], b);
+    Client *c1 = new Client(0, 50, 64, 72,people[ofRandom(people.size())], b);
     entityManager->addClient(c1);
     }
 }
@@ -188,7 +201,7 @@ void Restaurant::render() {
         }
     }
 
-    if(State::level == 2){
+    else if(State::level == 2){
     double xCoord = -49.5;
     int n = 40;
     for(double yCoord = -24; yCoord < ofGetWidth() + 24; yCoord+=24){
@@ -245,12 +258,14 @@ void Restaurant::render() {
     bigTree.draw(400, 125, 150, 127);
 
     }
+    else if(State::level == 3) floor.draw(0,0, ofGetWidth(), ofGetHeight());
+
     player->render();
     entityManager->render();
     ofSetColor(0, 100, 0);
     if(State::level == 2) ofSetColor(0,0,0);
-    string moneyStr = "money    ";
-    font1.drawString("money: " + to_string(money), ofGetWidth()/2 - moneyStr.length()/2*26, 32);
+    string moneyStr = "money: " + to_string(money);
+    font1.drawString(moneyStr , ofGetWidth()/2 - font1.stringWidth(moneyStr)/2, font1.stringHeight(moneyStr) +2);
     ofSetColor(256, 256, 256);
 
     if (entityManager->inspector != nullptr && entityManager->inspector->getPatience() > 1700){

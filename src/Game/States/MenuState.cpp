@@ -1,5 +1,5 @@
 #include "MenuState.h"
-int State::level = 2;
+int State::level = 1;
 MenuState::MenuState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
 	background.load("images/background1.jpg");

@@ -11,6 +11,9 @@ void GameState::tick() {
 	}else if(restaurant->getMoney()==200 && State::level == 2){
 		setNextState("Win");
 		setFinished(true);
+	}else if(restaurant->getMoney()==300 && State::level == 3){
+		setNextState("Win");
+		setFinished(true);
 	}else if(restaurant->getManager()->firstClient != nullptr && restaurant->lost()){
 		setNextState("Lose");
 		setFinished(true);
