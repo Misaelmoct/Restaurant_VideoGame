@@ -72,7 +72,6 @@ void Player::render(){
     }
     
     ofSetColor(256,256,256);
-    ofImage currentFrame = chefAnim->getCurrentFrame();
     if(State::level == 1){ ofImage currentFrame = chefAnim->getCurrentFrame();
    if(facing == "left"){
        currentFrame.mirror(false, true);
