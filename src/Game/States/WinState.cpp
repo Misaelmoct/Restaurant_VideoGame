@@ -26,7 +26,7 @@ void WinState::mousePressed(int x, int y, int button){
 }
 
 void WinState::reset(){
-	if(State::level <= 3){
+	if(State::level < 3){
 	State::level++;
 	}
 	setRestart(false);
