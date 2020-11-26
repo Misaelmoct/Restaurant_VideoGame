@@ -30,10 +30,12 @@ class Restaurant {
         Item* botBread;
         Item* topBread;
         vector<Item*> ingredientsAvailable;
-        ofImage floor,decor,tables,chair1,fancyTables, fancyTable1; 
+        ofImage chefPlayerImage;
+        ofImage floor,decor,tables,chair1,fancyTables, fancyTable1,animals, treesSprite, bigTree, smallTree, mediumTree, plant, pasto, bigTree2, deadTree; 
         void initItems();
         void initCounters();
         void initClients();
+        void initMode();
         void generateClient();
         void generateInspector();
         void serveClient();

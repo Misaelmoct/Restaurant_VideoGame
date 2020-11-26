@@ -26,6 +26,9 @@ void WinState::mousePressed(int x, int y, int button){
 }
 
 void WinState::reset(){
+	if(State::level <= 2){
+	State::level++;
+	}
 	setRestart(false);
 	setFinished(false);
 	setNextState("");
