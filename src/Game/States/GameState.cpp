@@ -5,7 +5,13 @@ GameState::GameState() {
 }
 void GameState::tick() {
 	restaurant->tick();
-	if(restaurant->getMoney()==100){
+	if(restaurant->getMoney()==100 && State::level == 1){
+		setNextState("Win");
+		setFinished(true);
+	}else if(restaurant->getMoney()==200 && State::level == 2){
+		setNextState("Win");
+		setFinished(true);
+	}else if(restaurant->getMoney()==300 && State::level == 3){
 		setNextState("Win");
 		setFinished(true);
 	}else if(restaurant->getManager()->firstClient != nullptr && restaurant->lost()){
