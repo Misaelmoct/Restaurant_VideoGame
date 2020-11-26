@@ -17,7 +17,7 @@ void MenuState::render() {
 	ofSetBackgroundColor(10,30,30);
 	background.draw(0,0);
 	ofSetColor(255);
-	ofDrawBitmapString("Press 'E' to collect ingredients. \nPress 'S' to serve",200,600);
+	ofDrawBitmapString("Press 'E' to collect ingredients.\nPress 'U' to delete last picked ingredient.\nPress 'S' to serve. " ,200,600);
 	startButton->render();
 }
 

@@ -3,10 +3,12 @@
 #include "Burger.h"
 #include "EntityManager.h"
 #include "BaseCounter.h"
+#include "StoveCounter.h"
 class Player: public Entity{
 
     private:
-        int speed = 5;
+        int speed = 5, cookingTimer = 0;
+        bool isCooking = false, isCooked = false, hasBeenCooked = false;
         string facing = "right";
         Animation *chefAnim;
         Burger *burger;

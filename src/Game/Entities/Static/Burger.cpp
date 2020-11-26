@@ -23,10 +23,14 @@ void Burger::render(){
         ingredients.pop();;
     }
         while( !copyTarget.empty()){
+        if(copyTarget.top()->name == "patty"){
+            ofSetColor(139,69,19);
+        }
         copyTarget.top()->sprite.draw(x,y-(counter * 10),width,height);
         counter++;
         ingredients.push(copyTarget.top());
         copyTarget.pop();
+        ofSetColor(255,255,255);
     }
 
 }

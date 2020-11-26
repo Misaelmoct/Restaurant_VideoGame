@@ -9,6 +9,7 @@
 #include "EntityManager.h"
 #include "BaseCounter.h"
 #include "Inspector.h"
+#include "StoveCounter.h"
 
 class Restaurant {
     private:
