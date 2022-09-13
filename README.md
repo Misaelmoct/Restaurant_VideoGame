@@ -8,7 +8,9 @@ course Advance Programming or also known as Object Oriented Programming course. 
 
 ## Set Up Everything
 
-> Only for Windows OS.
+> Only for Windows OS.  
+<br>  
+
 1. Go to the [OpenFrameworks](https://openframeworks.cc/download/) download section and look for the [setup guide for msys2](https://openframeworks.cc/setup/msys2/).
 2. Follow the docs on how to install everything.
 > If an error occur while compiling related to 'ofOpenALSoundPlayer.h' go to "libs/openFrameworks/sound/ofOpenALSoundPlayer.h" file and change 
@@ -22,4 +24,24 @@ course Advance Programming or also known as Object Oriented Programming course. 
 
 
 > **Note:** If only interested on seing the different levels go to "src\Game\States\MenuState.cpp" and change "int State::lever = 1" to '2' or '3'.
+<br>
+<br>  
 
+> ## Menu  
+
+![image](https://user-images.githubusercontent.com/70610617/189815940-84955fe1-1d7b-43e3-b82d-fe87cb773711.png)  
+<br>
+<br>  
+
+> ## Level 1
+![image](https://user-images.githubusercontent.com/70610617/189816043-01ef02b0-7785-4e95-a5c2-6ff3cf135029.png)  
+<br>
+<br>  
+
+> ## Level 2
+![image](https://user-images.githubusercontent.com/70610617/189816217-e906fb42-b252-496e-9e5b-fa0a29c25c56.png)  
+<br>  
+<br>  
+
+> ## Level 3
+![image](https://user-images.githubusercontent.com/70610617/189816413-866e877e-987e-4995-a86e-8aec8339436e.png)
